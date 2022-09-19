@@ -76,6 +76,8 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'GreatCart.wsgi.application'
 
+AUTH_USER_MODEL = 'accounts.Accounts'
+
 
 # Database
 # https://docs.djangoproject.com/en/4.1/ref/settings/#databases
@@ -140,3 +142,11 @@ from django.contrib.messages import constants as messages
 MESSAGE_TAGS = {
     messages.ERROR: 'danger',
 }
+
+#SMTP configurations
+EMAIL_BACKEND='django.core.mail.backends.smtp.EmailBackend'
+EMAIL_HOST = 'smtp.gmail.com'
+EMAIL_PORT = 587
+EMAIL_HOST_USER = 'marchshopping2021@gmail.com'
+EMAIL_HOST_PASSWORD = 'sjwhshufxrkdyqdw'
+EMAIL_USE_TLS = True
