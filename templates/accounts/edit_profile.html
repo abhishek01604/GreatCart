@@ -1,0 +1,85 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<body>
+
+
+<!-- ========================= SECTION CONTENT ========================= -->
+<section class="section-conten padding-y bg">
+
+    <div class="container">
+        <div class="row">
+            <aside class="col-md-3">
+                <!--   SIDEBAR   -->
+                <ul class="list-group">
+                    <a class="list-group-item  {% if '/accounts/' == request.path %} active{% endif %}"
+                       href="{% url 'dashboard' %}"> Dashboard</a>
+                    <a class="list-group-item  {% if '/my_orders/' in request.path %} active{% endif %}"
+                       href="{% url 'my_orders' %}"> My Orders </a>
+                    <a class="list-group-item  {% if '/my_orders/' in request.path %} active{% endif %}"
+                       href="{% url 'edit_profile' %}"> Edit Profile </a>
+                    <a class="list-group-item  {% if '/change_password/' in request.path %} active{% endif %}"
+                       href="{% url 'change_password' %}">Change Password </a>
+                    <!--                    <a class="list-group-item" href="#">  </a>-->
+<!--                    <a class="list-group-item" href="#"> </a>-->
+
+                </ul>
+                <br>
+                <a class="btn btn-light btn-block" href="{% url 'logout' %}"> <i class="fa fa-power-off"></i> <span
+                        class="text">Log out</span> </a>
+            </aside>
+            <main class="col-md-9">
+                <article class="card">
+                    <header class="card-header">
+                        <strong class="d-inline-block mr-3">Edit Your Profile</strong>
+
+                    </header>
+                    <div class="card-body">
+                        <div class="text-right">
+                            <img src="{{userprofile.profile_picture.url}}" alt="Profile Picture" width="100" style="border-radius:50px;">
+                        </div>
+                        <div class="col-md-12">
+                            <form action="{% url 'edit_profile' %}" method="POST" enctype="multipart/form-data">
+                                {% csrf_token %}
+
+                                <div class="form-row">
+                                    <div class="form-group col-md-6">
+                                        <label>First Name</label>
+                                        {{user_form.first_name}}
+                                    </div>
+                                    <div class="form-row">
+                                        <div class="form-group col-md-6">
+                                            <label>Last Name</label>
+                                        {{user_form.last_name}}
+                                        </div>
+                                        <div class="form-row">
+                                            <div class="form-group col-md-6">
+                                                <label>Phone Number</label>
+                                        {{user_form.phone_number}}
+                                            </div>
+                                            <div class="form-row">
+                                                <div class="form-group col-md-6">
+                                                    <label>Profile Picture</label>
+                    {{profile_form.profile_picture}}
+                                                </div>
+                                                <div class="form-group">
+                                                    <label>Address Line 1</label>
+{{profile_form.address_line_2}}                                                </div>
+                                                <div class="form-group col-md-4">
+                                                    <label>City</label>
+                                                    {{profile_form.city}}
+                                                </div>
+                                                <div class="form-group col-md-4">
+                                                    <label>State</label>
+                                                    {{profile_form.state}}
+                                                </div>
+                                                <div class="form-group col-md-4">
+                                                    <label>Countyr</label>
+{{profile_form.country}}                                                </div>
+                                                <input type="submit" value="save" class="btn btn-primary">
+                            </form>
+
+
+</section>
+
+{% endblock %}

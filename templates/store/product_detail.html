@@ -23,10 +23,10 @@
 
                     <ul class="thumb">
                         <li>
-                            <!--							<a href="{{ single_product.images.url }}" target="mainImage"><img src="{{ single_product.images.url }}" alt="Product Image"></a>-->
-                            <!--							{% for i in product_gallery %}-->
-                            <!--							<a href="{{i.image.url}}" target="mainImage"><img src="{{i.image.url}}" alt="Product Image"></a>-->
-                            <!--							{% endfor %}-->
+                            							<a href="{{ single_product.images.url }}" target="mainImage"><img src="{{ single_product.images.url }}" alt="Product Image"></a>
+                            							{% for i in product_gallery %}
+                            							<a href="{{i.image.url}}" target="mainImage"><img src="{{i.image.url}}" alt="Product Image"></a>
+                            							{% endfor %}
                         </li>
                     </ul>
                 </aside>
@@ -47,16 +47,6 @@
 
                             </div></span>
                             <span>{{single_product.CountReview}} reviews</span>
-                            <!--							<div class="rating-star">-->
-                            <!--								<span>-->
-                            <!--									<i class="fa fa-star{% if single_product.averageReview < 0.5 %}-o{% elif single_product.averageReview >= 0.5 and single_product.averageReview < 1 %}-half-o {% endif %}" aria-hidden="true"></i>-->
-                            <!--									<i class="fa fa-star{% if single_product.averageReview < 1.5 %}-o{% elif single_product.averageReview >= 1.5 and single_product.averageReview < 2 %}-half-o {% endif %}" aria-hidden="true"></i>-->
-                            <!--									<i class="fa fa-star{% if single_product.averageReview < 2.5 %}-o{% elif single_product.averageReview >= 2.5 and single_product.averageReview < 3 %}-half-o {% endif %}" aria-hidden="true"></i>-->
-                            <!--									<i class="fa fa-star{% if single_product.averageReview < 3.5 %}-o{% elif single_product.averageReview >= 3.5 and single_product.averageReview < 4 %}-half-o {% endif %}" aria-hidden="true"></i>-->
-                            <!--									<i class="fa fa-star{% if single_product.averageReview < 4.5 %}-o{% elif single_product.averageReview >= 4.5 and single_product.averageReview < 5 %}-half-o {% endif %}" aria-hidden="true"></i>-->
-                            <!--	<span>{{single_product.countReview}} reviews</span>-->
-                            <!--									</span>-->
-                            <!--							</div>-->
 
 
                             <div class="mb-3">
@@ -84,35 +74,14 @@
                                     <select name="size" class="form-control" required>
                                         <option value="" disabled selected>Select</option>
                                         {% for i in single_product.variational_set.size %}
-                                        <option value="{{ i.variation_value | lower }}">{{ i.variation_value | capfirst
-                                            }}
+                                        <option value="{{ i.variation_value | lower }}">{{ i.variation_value | capfirst }}
                                         </option>
                                         {% endfor %}
                                     </select>
                                 </div>
                             </div>
                             <div class="row">
-                                <!--								<div class="item-option-select">-->
-                                <!--									<h6>choose color</h6>-->
-                                <!--									<select name="color" class="form-control">-->
-                                <!--										<option value="red">Red</option>-->
-                                <!--										<option value="yellow">Yellow</option>-->
-                                <!--										<option value="green">Green</option>-->
-                                <!--&lt;!&ndash;										<option value="red">Red</option>&ndash;&gt;-->
-                                <!--									</select>-->
-                                <!--								</div>-->
-                                <!--							</div>-->
-                                <!--							<div class="row">-->
-                                <!--								<div class="item-option-select">-->
-                                <!--									<h6>Select Size</h6>-->
-                                <!--									<select name="size" class="form-control">-->
-                                <!--										<option value="small">Small</option>-->
-                                <!--										<option value="medium">Medium</option>-->
-                                <!--										<option value="large">Large</option>-->
-                                <!--&lt;!&ndash;										<option value="red">Red</option>&ndash;&gt;-->
-                                <!--									</select>-->
-                                <!--								</div>-->
-                                <!--							</div>-->
+
                                 <hr>
                                 {% if single_product.stock <= 0 %}
                                 <h5 class="text-danger">Out of Stock</h5>
@@ -213,7 +182,7 @@
                 {% for review in reviews %}
                 <article class="box mb-3">
                     <div class="icontent w-100">
-                        <img src="" class="img-xs icon rounded-circle">
+                        <img src={{review.user.profile_picture.url}} alt="sorry" class="img-xs icon rounded-circle">
                         <div class="text">
                             <span class="date text-muted float-md-right">{{review.updated_at}}</span>
                             <h6 class="mb-1">{{review.user.fullname}}</h6>
